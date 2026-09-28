@@ -556,6 +556,124 @@ section {
 
 
 /* =========================================================
+   HOME
+========================================================= */
+
+.home-section {
+    display: grid;
+
+    grid-template-columns: 250px minmax(0, 1fr);
+
+    align-items: center;
+
+    column-gap: 60px;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.home-profile {
+    width: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow: visible;
+
+    animation: profileFloat 5s ease-in-out infinite;
+}
+
+.home-profile::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 375px;
+
+    border-radius: 50%;
+
+    background: rgba(96, 165, 250, 0.15);
+
+    filter: blur(30px);
+
+    z-index: 0;
+
+    animation: profileGlow 3s ease-in-out infinite;
+}
+
+.profile-image {
+    position: relative;
+
+    z-index: 1;
+
+    width: 250px;
+    height: 375px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(96, 165, 250, 0.7);
+
+    box-shadow:
+        0 0 20px rgba(96, 165, 250, 0.2),
+        0 20px 60px rgba(0, 0, 0, 0.45);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.home-profile:hover .profile-image {
+    transform: scale(1.04);
+
+    box-shadow:
+        0 0 30px rgba(96, 165, 250, 0.35),
+        0 0 70px rgba(96, 165, 250, 0.15),
+        0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================================
+   PROFILE ANIMATION
+========================================================= */
+
+@keyframes profileFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes profileGlow {
+
+    0%,
+    100% {
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 0.9;
+    }
+}
+
+
+/* =========================================================
    HOME CONTENT
 ========================================================= */
 
@@ -563,21 +681,15 @@ section {
     min-width: 0;
 
     position: relative;
+
     z-index: 2;
-}
 
-
-
-/* HOME content */
-
-.home-content {
-    min-width: 0;
-    position: relative;
-    z-index: 2;
+    text-align: left;
 }
 
 .home-greeting {
     font-size: 15px;
+
     font-weight: 700;
 
     letter-spacing: 4px;
@@ -588,7 +700,7 @@ section {
 }
 
 .home-content h1 {
-    font-size: clamp(55px, 7vw, 95px);
+    font-size: clamp(55px, 6vw, 90px);
 
     line-height: 0.95;
 
@@ -605,44 +717,6 @@ section {
     font-weight: 600;
 }
 
-.home-content h2 span {
-    position: relative;
-}
-
-
-/* Animated underline */
-
-.home-content h2 span::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -7px;
-
-    width: 100%;
-    height: 3px;
-
-    background: currentColor;
-
-    transform-origin: left;
-
-    animation: underlineMove 3s ease-in-out infinite;
-}
-
-@keyframes underlineMove {
-
-    0%,
-    100% {
-        transform: scaleX(0.4);
-    }
-
-    50% {
-        transform: scaleX(1);
-    }
-
-}
-
 .home-description {
     max-width: 600px;
 
@@ -654,10 +728,13 @@ section {
 
     margin-bottom: 35px;
 }
-/* animated elements */
+
+
+/* =========================================================
+   HOME ANIMATION
+========================================================= */
 
 .home-animation {
-
     position: absolute;
 
     right: 2%;
@@ -673,7 +750,6 @@ section {
 
     pointer-events: none;
 }
-
 
 /*center glowing orb*/
 
@@ -2174,13 +2250,238 @@ section {
     }
 
 
+/* =========================================================
+   MOBILE ONLY
+========================================================= */
+
+@media (max-width: 650px) {
+
     /* =====================================================
-       MOBILE ANIMATION
-       
-       Keep it VERY subtle.
+       GLOBAL MOBILE FIX
+    ===================================================== */
+
+    html {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    section {
+        width: 100%;
+        min-height: auto;
+        padding: 90px 20px 70px;
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+
+    .navbar {
+        width: 100%;
+        height: 65px;
+
+        padding: 0 16px;
+
+        display: flex;
+        justify-content: space-between;
+
+        overflow: hidden;
+    }
+
+    .logo {
+        flex-shrink: 0;
+        font-size: 17px;
+        letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+
+        gap: 8px;
+
+        flex-shrink: 0;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+        padding: 6px 0;
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       HOME
+    ===================================================== */
+
+    .home-section {
+
+        width: 100%;
+
+        min-height: 100svh;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 100px 20px 60px;
+
+        text-align: center;
+
+        position: relative;
+
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       PROFILE
+    ===================================================== */
+
+    .home-profile {
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        margin-bottom: 30px;
+
+        animation: none;
+
+        position: relative;
+
+        z-index: 3;
+    }
+
+    .home-profile::before {
+
+        width: 150px;
+        height: 220px;
+
+        filter: blur(25px);
+    }
+
+    .profile-image {
+
+        width: 150px;
+        height: 225px;
+
+        border-width: 2px;
+    }
+
+    .home-profile:hover .profile-image {
+
+        transform: none;
+    }
+
+
+    /* =====================================================
+       HOME CONTENT
+    ===================================================== */
+
+    .home-content {
+
+        width: 100%;
+        max-width: 500px;
+
+        min-width: 0;
+
+        text-align: center;
+
+        position: relative;
+
+        z-index: 5;
+    }
+
+    .home-greeting {
+
+        font-size: 11px;
+
+        letter-spacing: 2.5px;
+
+        margin-bottom: 12px;
+    }
+
+    .home-content h1 {
+
+        font-size: clamp(38px, 12vw, 52px);
+
+        line-height: 1;
+
+        margin-bottom: 18px;
+
+        word-break: normal;
+    }
+
+    .home-content h2 {
+
+        font-size: 21px;
+
+        line-height: 1.4;
+
+        margin-bottom: 20px;
+    }
+
+    .home-description {
+
+        width: 100%;
+
+        max-width: 430px;
+
+        margin: 0 auto 28px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       HOME BUTTONS
+    ===================================================== */
+
+    .home-buttons {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .primary-button,
+    .secondary-button {
+
+        width: 100%;
+
+        max-width: 260px;
+
+        padding: 13px 20px;
+    }
+
+
+    /* =====================================================
+       HOME ANIMATION
     ===================================================== */
 
     .home-animation {
+
         position: absolute;
 
         width: 280px;
@@ -2193,52 +2494,239 @@ section {
 
         transform: translate(-50%, -50%);
 
-        opacity: 0.05;
+        opacity: 0.04;
 
         z-index: 0;
 
         pointer-events: none;
     }
 
-
-    /* Glow */
-
     .glow-orb {
+
         width: 90px;
         height: 90px;
     }
 
-
-    /* Rings */
-
     .orbit-one {
+
         width: 160px;
         height: 160px;
     }
 
     .orbit-two {
+
+        width: 220px;
+        height: 220px;
+    }
+
+    .orbit-three {
+
+        display: none;
+    }
+
+    .code-symbol {
+
+        display: none;
+    }
+
+    .floating-dot {
+
+        width: 5px;
+        height: 5px;
+    }
+
+    .dot-four {
+
+        display: none;
+    }
+
+
+    /* =====================================================
+       ABOUT ME
+    ===================================================== */
+
+    .about-section {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 40px;
+
+        min-height: auto;
+
+        padding-top: 90px;
+        padding-bottom: 90px;
+
+        text-align: center;
+    }
+
+    .about-content {
+
+        width: 100%;
+
+        max-width: 600px;
+
+        text-align: center;
+    }
+
+    .about-content h2 {
+
+        font-size: clamp(36px, 10vw, 48px);
+
+        line-height: 1.1;
+
+        margin-bottom: 20px;
+    }
+
+    .about-content p:not(.section-label) {
+
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       ABOUT ANIMATION
+    ===================================================== */
+
+    .about-animation {
+
+        width: 280px;
+        height: 280px;
+
+        margin: 0 auto;
+    }
+
+    .question-mark {
+
+        font-size: 160px;
+    }
+
+    .orbit-1 {
+
         width: 230px;
         height: 230px;
     }
 
-    .orbit-three {
-        display: none;
+    .orbit-2 {
+
+        width: 280px;
+        height: 140px;
+    }
+
+    .particle {
+
+        width: 5px;
+        height: 5px;
     }
 
 
-    /* Hide floating code boxes */
+    /* =====================================================
+       SKILLS
+    ===================================================== */
 
-    .code-symbol {
-        display: none;
+    .skills-grid {
+
+        margin-top: 30px;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .skill-card {
+
+        padding: 25px;
+
+        text-align: center;
     }
 
 
-    /* Hide one particle */
+    /* =====================================================
+       PROJECTS
+    ===================================================== */
 
-    .dot-four {
-        display: none;
+    .projects-grid {
+
+        margin-top: 30px;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
     }
 
+    .project-card {
+
+        min-height: 220px;
+
+        padding: 28px;
+    }
+
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-container {
+
+        margin-top: 30px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 35px;
+    }
+
+    .contact-info {
+
+        width: 100%;
+    }
+
+    .contact-form {
+
+        width: 100%;
+
+        padding: 22px;
+    }
+
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    .toast-notification {
+
+        left: 15px;
+        right: 15px;
+
+        top: 75px;
+
+        width: auto;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer {
+
+        padding: 25px 20px;
+
+        font-size: 13px;
+    }
+}
 
     /* =====================================================
        OTHER SECTIONS
