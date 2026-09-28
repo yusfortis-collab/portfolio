@@ -10,7 +10,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ project.title }} | My Portfolio</title>
+    <title>{{ project.title }} | Portfolio</title>
+    <link rel="icon" type="image/png" href="{% static 'images/Portfolio_Icon.png' %}">
 
 
     <style>
@@ -175,51 +176,146 @@
 
 
 
-        .project-screenshots {
-            display: grid;
+        /*PROJECT IMAGE CAROUSEL*/
 
-            grid-template-columns: repeat(2, 1fr);
+        .project-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 950px;
+            height: 600px;
+            margin: 0 auto;
 
-            gap: 25px;
-        }
-
-        .project-screenshot {
             overflow: hidden;
 
-            border-radius: 15px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
 
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
 
-            background:
-                rgba(255, 255, 255, 0.03);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.30);
 
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
 
-        .project-screenshot img {
-            display: block;
+
+        /* IMAGE TRACK*/
+
+        .project-carousel-track {
+            display: flex;
 
             width: 100%;
+            height: 100%;
 
-            height: auto;
+            transition:
+                transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 
-            transition: transform 0.4s ease;
+            will-change: transform;
         }
 
-        .project-screenshot:hover img {
-            transform: scale(1.03);
-        }
 
+        /*IMAGES*/
 
-        .project-screenshot img {
+        .project-carousel-image {
+            flex: 0 0 100%;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
             cursor: zoom-in;
+
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
-        .project-screenshot img:hover {
-            transform: scale(1.03);
+        /* ARROWS */
+
+        .carousel-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            z-index: 5;
+
+            width: 48px;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: rgba(15, 23, 42, 0.75);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            backdrop-filter: blur(10px);
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease;
         }
 
+
+        .carousel-arrow:hover {
+            background: rgba(96, 165, 250, 0.25);
+
+            border-color: rgba(96, 165, 250, 0.6);
+
+            transform: translateY(-50%) scale(1.08);
+        }
+
+
+        .carousel-prev {
+            left: 18px;
+        }
+
+
+        .carousel-next {
+            right: 18px;
+        }
+
+        .carousel-counter {
+            position: absolute;
+
+            bottom: 15px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 5;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background: rgba(15, 23, 42, 0.75);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            color: rgba(255, 255, 255, 0.85);
+
+            font-size: 13px;
+
+            backdrop-filter: blur(10px);
+        }
 
 
 
@@ -257,8 +353,8 @@
         box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.6);
 
-    cursor: default;
-}
+        cursor: default;
+        }
 
 
 
@@ -464,59 +560,6 @@
 
 </div>
 
-
-<script>
-
-    function openImage(image) {
-
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
-
-        modalImage.src = image.src;
-
-        modal.style.display = "flex";
-
-        document.body.style.overflow = "hidden";
-    }
-
-
-    function closeImage() {
-
-        const modal = document.getElementById("imageModal");
-
-        modal.style.display = "none";
-
-        document.body.style.overflow = "auto";
-    }
-
-
-    /* Close when clicking the dark background */
-
-    document.getElementById("imageModal").addEventListener("click", function(event) {
-
-        if (event.target === this) {
-
-            closeImage();
-
-        }
-
-    });
-
-
-    /* Close with ESC */
-
-    document.addEventListener("keydown", function(event) {
-
-        if (event.key === "Escape") {
-
-            closeImage();
-
-        }
-
-    });
-
-</script>
-
 <body>
 
     <main class="project-detail">
@@ -551,39 +594,50 @@
         </section>
 
 
-        <!-- =========================
-             SCREENSHOTS
-        ========================= -->
+        <div class="project-carousel">
+            <div class="project-carousel-track">
 
-        <section class="project-detail-section">
+            {% for screenshot in project.screenshots %}
 
-            <p class="section-label">
-                PREVIEW
-            </p>
+                <img
+                    class="project-carousel-image"
+                    src="{% static screenshot %}"
+                    alt="{{ project.title }} screenshot"
+                    onclick="openImage(this)"
+                    data-index="{{ forloop.counter0 }}"
+                >
 
-            <h2>
-                Project Screenshots
-            </h2>
+            {% endfor %}
+            </div>
 
 
-            <div class="project-screenshots">
+            <button
+                class="carousel-arrow carousel-prev"
+                onclick="changeProjectImage(-1)"
+                aria-label="Previous image"
+            >
+                &#10094;
+            </button>
 
-                {% for screenshot in project.screenshots %}
+            <button
+                class="carousel-arrow carousel-next"
+                onclick="changeProjectImage(1)"
+                aria-label="Next image"
+            >
+                &#10095;
+            </button>
 
-                    <div class="project-screenshot">
 
-                        <img
-                            src="{% static screenshot %}"
-                            alt="{{ project.title }} screenshot"
-                            onClick="openImage(this)"
-                        >
 
-                    </div>
+            <div class="carousel-counter">
 
-                {% endfor %}
+                <span id="currentImage">1</span>
+                /
+                <span id="totalImages">{{ project.screenshots|length }}</span>
 
             </div>
 
+        </div>
         </section>
         <!-- =========================
              FEATURES
@@ -669,8 +723,189 @@
         </section>
 
     </main>
+<script>
+    function openImage(image) {
 
+        const modal =
+            document.getElementById("imageModal");
+
+        const modalImage =
+            document.getElementById("modalImage");
+
+
+        modalImage.src = image.src;
+
+        modal.style.display = "flex";
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+
+    function closeImage() {
+
+        const modal =
+            document.getElementById("imageModal");
+
+
+        modal.style.display = "none";
+
+        document.body.style.overflow = "auto";
+
+    }
+
+
+    const imageModal =
+        document.getElementById("imageModal");
+
+
+    if (imageModal) {
+
+        imageModal.addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === this) {
+
+                    closeImage();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closeImage();
+
+            }
+
+        }
+    );
+
+
+
+
+    const projectTrack =
+        document.querySelector(
+            ".project-carousel-track"
+        );
+
+
+    const projectImages =
+        document.querySelectorAll(
+            ".project-carousel-image"
+        );
+
+
+    let currentImageIndex = 0;
+
+
+    let imageTimer = null;
+
+
+
+    function updateProjectSlider() {
+
+        if (
+            !projectTrack ||
+            projectImages.length === 0
+        ) {
+
+            return;
+
+        }
+
+        projectTrack.style.transform =
+            `translateX(-${currentImageIndex * 100}%)`;
+
+
+
+        const counter =
+            document.getElementById(
+                "currentImage"
+            );
+
+
+        if (counter) {
+
+            counter.textContent =
+                currentImageIndex + 1;
+
+        }
+
+    }
+
+
+
+    function changeProjectImage(direction) {
+
+        if (projectImages.length <= 1) {
+
+            return;
+
+        }
+
+
+        currentImageIndex += direction;
+
+
+        if (
+            currentImageIndex >=
+            projectImages.length
+        ) {
+
+            currentImageIndex = 0;
+
+        }
+
+
+        if (currentImageIndex < 0) {
+
+            currentImageIndex =
+                projectImages.length - 1;
+
+        }
+
+        updateProjectSlider();
+
+        clearInterval(imageTimer);
+
+        startImageTimer();
+
+    }
+
+    function startImageTimer() {
+
+        imageTimer =
+            setInterval(
+                function() {
+
+                    changeProjectImage(1);
+
+                },
+                3000
+            );
+
+    }
+
+
+    updateProjectSlider();
+
+    startImageTimer();
+
+
+</script>
 </body>
 
 </html>
-```
+
