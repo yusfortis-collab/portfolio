@@ -513,31 +513,373 @@
         }
 
         /* =========================================================
-           MOBILE
+           TABLET DEVICES
+           701px - 1024px
+        ========================================================= */
+
+        @media (min-width: 701px) and (max-width: 1024px) {
+
+            .project-detail {
+                max-width: 950px;
+                padding: 70px 6%;
+            }
+
+            /* BACK BUTTON */
+
+            .back-button {
+                margin-bottom: 40px;
+            }
+
+
+            /* PROJECT HEADER */
+
+            .project-detail-header {
+                margin-bottom: 55px;
+            }
+
+            .project-detail-header h1 {
+                font-size: 44px;
+            }
+
+            .project-detail-description {
+                max-width: 700px;
+                font-size: 17px;
+            }
+
+
+            /* SECTIONS */
+
+            .project-detail-section {
+                margin-bottom: 65px;
+            }
+
+            .project-detail-section h2 {
+                font-size: 30px;
+                margin-bottom: 25px;
+            }
+
+            .project-detail-section h3 {
+                font-size: 21px;
+                margin-top: 35px;
+            }
+
+
+            /* PROJECT CAROUSEL */
+
+            .project-carousel {
+                height: 480px;
+                border-radius: 16px;
+            }
+
+            .carousel-arrow {
+                width: 44px;
+                height: 44px;
+                font-size: 22px;
+            }
+
+            .carousel-prev {
+                left: 14px;
+            }
+
+            .carousel-next {
+                right: 14px;
+            }
+
+
+            /* FEATURES */
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+
+            .feature-card p {
+                font-size: 14px;
+            }
+
+
+            /* DOCUMENTATION */
+
+            .documentation-text {
+                max-width: 750px;
+                font-size: 15px;
+                line-height: 1.8;
+            }
+
+
+            /* TECHNOLOGIES */
+
+            .technology-list {
+                gap: 9px;
+            }
+
+            .technology-list span {
+                padding: 7px 13px;
+                font-size: 13px;
+            }
+
+
+            /* IMAGE MODAL */
+
+            .image-modal {
+                padding: 25px;
+            }
+
+            .image-modal img {
+                max-width: 92%;
+                max-height: 85vh;
+            }
+
+            .close-image {
+                top: 18px;
+                right: 25px;
+                font-size: 40px;
+            }
+        }
+
+
+        /* =========================================================
+           MOBILE DEVICES
+           700px and below
         ========================================================= */
 
         @media (max-width: 700px) {
 
+            body {
+                overflow-x: hidden;
+            }
+
+
             .project-detail {
-                padding: 60px 5%;
+                width: 100%;
+                max-width: 100%;
+                padding: 45px 6%;
+            }
+
+
+            /* BACK BUTTON */
+
+            .back-button {
+                margin-bottom: 35px;
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+
+
+            /* PROJECT HEADER */
+
+            .project-detail-header {
+                margin-bottom: 40px;
+            }
+
+            .section-label {
+                font-size: 11px;
+                letter-spacing: 1.8px;
             }
 
             .project-detail-header h1 {
-                font-size: 38px;
+                font-size: 34px;
+                line-height: 1.15;
+                margin-bottom: 18px;
+                word-break: break-word;
             }
 
             .project-detail-description {
-                font-size: 16px;
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+
+            /* SECTIONS */
+
+            .project-detail-section {
+                margin-bottom: 55px;
             }
 
             .project-detail-section h2 {
-                font-size: 27px;
+                font-size: 26px;
+                line-height: 1.2;
+                margin-bottom: 22px;
             }
 
-            .project-screenshots {
+            .project-detail-section h3 {
+                font-size: 20px;
+                line-height: 1.3;
+                margin-top: 30px;
+                margin-bottom: 12px;
+            }
+
+
+            /* PROJECT CAROUSEL */
+
+            .project-carousel {
+                width: 100%;
+                height: 270px;
+                border-radius: 14px;
+            }
+
+            .project-carousel-image {
+                object-fit: contain;
+            }
+
+            .carousel-arrow {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+            }
+
+            .carousel-prev {
+                left: 8px;
+            }
+
+            .carousel-next {
+                right: 8px;
+            }
+
+            .carousel-counter {
+                bottom: 10px;
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+
+
+            /* FEATURES */
+
+            .features-grid {
                 grid-template-columns: 1fr;
+                gap: 14px;
             }
 
+            .feature-card {
+                gap: 12px;
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            .feature-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 13px;
+            }
+
+            .feature-card p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+
+            /* DOCUMENTATION */
+
+            .documentation-text {
+                max-width: 100%;
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+
+            /* TECHNOLOGIES */
+
+            .technology-list {
+                gap: 8px;
+            }
+
+            .technology-list span {
+                padding: 7px 12px;
+                font-size: 12px;
+            }
+
+
+            /* IMAGE MODAL */
+
+            .image-modal {
+                padding: 15px;
+            }
+
+            .image-modal img {
+                max-width: 96%;
+                max-height: 80vh;
+                border-radius: 8px;
+            }
+
+            .close-image {
+                top: 15px;
+                right: 18px;
+                font-size: 38px;
+            }
+        }
+
+
+        /* =========================================================
+           SMALL PHONES
+           400px and below
+        ========================================================= */
+
+        @media (max-width: 400px) {
+
+            .project-detail {
+                padding: 35px 5%;
+            }
+
+            .back-button {
+                margin-bottom: 30px;
+                font-size: 12px;
+            }
+
+            .project-detail-header h1 {
+                font-size: 29px;
+            }
+
+            .project-detail-description {
+                font-size: 14px;
+            }
+
+            .project-detail-section h2 {
+                font-size: 23px;
+            }
+
+            .project-detail-section h3 {
+                font-size: 18px;
+            }
+
+            .project-carousel {
+                height: 230px;
+                border-radius: 12px;
+            }
+
+            .carousel-arrow {
+                width: 34px;
+                height: 34px;
+                font-size: 16px;
+            }
+
+            .carousel-prev {
+                left: 6px;
+            }
+
+            .carousel-next {
+                right: 6px;
+            }
+
+            .feature-card {
+                padding: 15px;
+            }
+
+            .feature-card p {
+                font-size: 13px;
+            }
+
+            .documentation-text {
+                font-size: 13px;
+            }
+
+            .technology-list span {
+                font-size: 11px;
+                padding: 6px 10px;
+            }
         }
 
     </style>

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="achievement-detail-page">
+
+    <div class="achievement-background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="achievement-orb achievement-orb-one"></div>
+    <div class="achievement-orb achievement-orb-two"></div>
+    <div class="achievement-orb achievement-orb-three"></div>
+
+    <div class="achievement-detail-container">
+
+       <a href="javascript:history.back()" class="achievement-back" aria-label="Go back">
+            ‹
+        </a>
+
+        <div class="achievement-header">
+
+            <p class="achievement-label">
+                ACHIEVEMENT
+            </p>
+
+            <h1>Latin Honor</h1>
+
+            <div class="achievement-year">
+                2026
+            </div>
+
+        </div>
+
+        <div class="achievement-image-wrapper">
+
+            <div class="achievement-image-glow"></div>
+
+            <div class="achievement-image-card">
+
+                <img
+                    src="{% static 'images/achievements/latinhonor.jpg' %}"
+                    alt="Latin Honor Certificate"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="achievement-description">
+
+            <p>
+                Being awarded Cum Laude upon graduating from City of Malabon 
+                University on June 27, 2026, is a proud achievement in my academic 
+                journey. This Latin honor recognizes my academic performance and 
+                marks the successful completion of my Bachelor of Science in Information
+                Technology degree.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="achievement-detail-page">
+
+    <div class="achievement-background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="achievement-orb achievement-orb-one"></div>
+    <div class="achievement-orb achievement-orb-two"></div>
+    <div class="achievement-orb achievement-orb-three"></div>
+
+    <div class="achievement-detail-container">
+
+       <a href="javascript:history.back()" class="achievement-back" aria-label="Go back">
+            ‹
+        </a>
+
+        <div class="achievement-header">
+
+            <p class="achievement-label">
+                ACHIEVEMENT
+            </p>
+
+            <h1>Diploma</h1>
+
+            <div class="achievement-year">
+                2026
+            </div>
+
+        </div>
+
+        <div class="achievement-image-wrapper">
+
+            <div class="achievement-image-glow"></div>
+
+            <div class="achievement-image-card">
+
+                <img
+                    src="{% static 'images/achievements/diploma.jpg' %}"
+                    alt="Diploma"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="achievement-description">
+
+            <p>
+                Receiving my diploma on June 30, 2026, from the City of Malabon University
+                 marks a significant milestone in my academic journey. It represents the 
+                 culmination of my dedication, hard work, and perseverance in completing 
+                 my Bachelor of Science in Information Technology degree.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

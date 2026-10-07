@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="achievement-detail-page">
+
+    <div class="achievement-background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="achievement-orb achievement-orb-one"></div>
+    <div class="achievement-orb achievement-orb-two"></div>
+    <div class="achievement-orb achievement-orb-three"></div>
+
+    <div class="achievement-detail-container">
+
+       <a href="javascript:history.back()" class="achievement-back" aria-label="Go back">
+            ‹
+        </a>
+
+        <div class="achievement-header">
+
+            <p class="achievement-label">
+                ACHIEVEMENT
+            </p>
+
+            <h1>Internship Certificate</h1>
+
+            <div class="achievement-year">
+                2026
+            </div>
+
+        </div>
+
+        <div class="achievement-image-wrapper">
+
+            <div class="achievement-image-glow"></div>
+
+            <div class="achievement-image-card">
+
+                <img
+                    src="{% static 'images/achievements/internship.jpg' %}"
+                    alt="Internship Certificate"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="achievement-description">
+
+            <p>
+                Receiving my internship certificate of completion in 2026 
+                marks a significant milestone in my professional journey. 
+                It represents the successful completion of my 400-hour 
+                on-the-job training at SM ZOTO, Inc., from mid-January to the 
+                last week of March, where I gained valuable hands-on experience 
+                and practical knowledge as a Bachelor of Science in Information Technology student.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

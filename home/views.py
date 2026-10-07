@@ -5,6 +5,19 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib import messages
 
+
+def internship(request):
+    return render(request, "internship.html")
+
+
+def diploma(request):
+    return render(request, "diploma.html")
+
+
+def latin_honor(request):
+    return render(request, "latin_honor.html")
+
+
 PROJECTS = {
 
     'student-portal': {

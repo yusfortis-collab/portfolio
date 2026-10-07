@@ -30,13 +30,56 @@ Julius Portfolio
 ========================= -->
 
 <section id="home" class="home-section">
+    <div class="binary-rain" aria-hidden="true">
+        <span>010101<br>110010<br>001101<br>101011<br>010110<br>111001</span>
+        <span>101010<br>011001<br>110101<br>001110<br>101101<br>010011</span>
+        <span>110100<br>001011<br>101010<br>010101<br>110010<br>011001</span>
+        <span>001101<br>101101<br>010011<br>111010<br>001101<br>110100</span>
+        <span>101011<br>010110<br>111001<br>001011<br>110101<br>010010</span>
+        <span>011010<br>110010<br>101010<br>001101<br>111000<br>010101</span>
+        <span>110101<br>001110<br>101101<br>010011<br>110100<br>001011</span>
+        <span>010101<br>111001<br>001101<br>110010<br>101010<br>011001</span>
+        <span>101101<br>010011<br>110100<br>001011<br>101010<br>110101</span>
+        <span>011001<br>110010<br>001101<br>101011<br>010110<br>111000</span>
+        <span>110100<br>010101<br>101010<br>001101<br>011001<br>110010</span>
+        <span>001011<br>101101<br>010011<br>110101<br>001110<br>101010</span>
+        <span>101010<br>011001<br>110100<br>001101<br>010101<br>111001</span>
+        <span>010110<br>110010<br>001011<br>101101<br>011001<br>110101</span>
+        <span>111000<br>010101<br>101010<br>001101<br>110100<br>011010</span>
+    </div>
+
     <div class="home-profile">
 
         <img
-            src= "{% static 'images/myimage.jpg'%}"
+            src= "{% static 'images/myimage.png'%}"
             alt="Julius B. Negro"
             class="profile-image"
         >
+        <div class="profile-orbit">
+
+            <div class="app-icon icon-nextjs">
+                <img src="{% static 'images/icons/Next.js.png'%}" alt="Next.js">
+            </div>
+
+            <div class="app-icon icon-typescript">
+                <img src="{% static 'images/icons/typescript.png'%}" alt="TypeScript">
+            </div>
+
+            <div class="app-icon icon-django">
+                <img src="{% static 'images/icons/Django.png'%}" alt="Django">
+            </div>
+
+            <div class="app-icon icon-python">
+                <img src="{% static 'images/icons/Python.png'%}" alt="Python">
+            </div>
+
+            <div class="app-icon icon-github">
+                <img src="{% static 'images/icons/GitHub.png'%}" alt="GitHub">
+            </div>
+            <div class="app-icon icon-vscode" alt="Visual Studio Code">
+                <img src="{% static 'images/icons/Visual Studio Code (VS Code).png'%}" alt="Visual Studio Code">
+            </div>
+        </div>
 
     </div>
 
@@ -46,24 +89,27 @@ Julius Portfolio
             HELLO, I'M
         </p>
 
-        <h1>
-            Julius B. Negro
+        <h1 class="glitch-title">
+            <span>J</span><span>u</span><span>l</span><span>i</span><span>u</span><span>s</span>
+            <span>B</span><span>.</span>
+            <span>N</span><span>e</span><span>g</span><span>r</span><span>o</span>
         </h1>
 
         <h2>
             Aspiring Web Developer
         </h2>
 
+
         <p class="home-description">
-            I am a Bachelor of Science in Information Technology
-            fresh graduate student that is passionate about building websites,
-            applications, and software solutions.
+            An IT graduate focused on building practical, 
+            user-friendly digital solutions through web 
+            development and modern technologies.
         </p>
 
         <div class="home-buttons">
 
-            <a href="#projects" class="primary-button">
-                View My Projects
+            <a href="{% static 'files/JuliusCV.pdf' %}" class="primary-button">
+                Download My CV
             </a>
 
             <a href="#contact" class="secondary-button">
@@ -109,15 +155,48 @@ Julius Portfolio
         </h2>
 
         <p class="section-description">
-
-            I am an Information Technology fresh graduate with a strong
-            interest in software development and web technologies.
-
-            I enjoy learning new technologies, developing
-            applications, solving programming problems, and
-            turning ideas into functional software.
-
+            I am an Information Technology fresh graduate with a strong passion for software development 
+            and web technologies. I enjoy learning new technologies, building applications, solving programming 
+            challenges, and transforming ideas into functional and user-friendly software. I am eager to apply my 
+            skills, continue growing as a developer, and contribute to meaningful projects in the technology industry.
         </p>
+
+    <div class="achievements-grid">
+
+        <a href="{% url 'internship' %}" class="achievement-card">
+            <div class="achievement-card-content">
+                <h3>INTERNSHIP</h3>
+                <span class="achievement-year">2026</span>
+            </div>
+
+            <span class="achievement-view">
+                View <span>↗</span>
+            </span>
+        </a>
+
+        <a href="{% url 'diploma' %}" class="achievement-card">
+            <div class="achievement-card-content">
+                <h3>DIPLOMA</h3>
+                <span class="achievement-year">2026</span>
+            </div>
+
+            <span class="achievement-view">
+                View <span>↗</span>
+            </span>
+        </a>
+
+        <a href="{% url 'latin_honor' %}" class="achievement-card">
+            <div class="achievement-card-content">
+                <h3>LATIN HONOR</h3>
+                <span class="achievement-year">2026</span>
+            </div>
+
+            <span class="achievement-view">
+                View <span>↗</span>
+            </span>
+        </a>
+
+    </div>
 
     </div>
         <div class="about-animation">
@@ -175,8 +254,23 @@ Julius Portfolio
         <div class="skills-grid">
 
             <div class="skill-card">
-                <h3>Python</h3>
-                <p>Django development and backend programming.</p>
+                <h3>Django Framework</h3>
+                <p>Python web framework used for backend development, APIs, authentication, and database management.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Next.js (TypeScript + React)</h3>
+                <p>Framework for building modern, responsive, and scalable web applications and user interfaces.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>MySQL</h3>
+                <p>Designing and managing relational databases.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>GitHub</h3>
+                <p>Version control and project management.</p>
             </div>
 
             <div class="skill-card">
@@ -185,23 +279,8 @@ Julius Portfolio
             </div>
 
             <div class="skill-card">
-                <h3>JavaScript</h3>
-                <p>Creating interactive web applications.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>React / Next.js</h3>
-                <p>Building modern frontend applications.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>Database</h3>
-                <p>SQLite, MySQL, and database management.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>GitHub</h3>
-                <p>Version control and project management.</p>
+                <h3>Microsoft Office</h3>
+                <p>Creating and managing documents, spreadsheets, and presentations.</p>
             </div>
 
         </div>
@@ -235,22 +314,34 @@ Julius Portfolio
             <a href="{% url 'project_detail' 'student-portal' %}"
                class="project-card">
 
-                <h3>
-                    School Attendance Portal
-                </h3>
+                <div class="project-image">
 
-                <p>
-                    A web-based student management system designed to manage 
-                    student and teacher information and attendance records.
-                </p>
+                    <img src="{% static 'images/projects/project1/studentportal_ss2.png' %}"
+                         alt="School Attendance Portal">
 
-                <p class="project-tech">
-                    Next.js • TypeScript • React • Prisma • MySQL
-                </p>
+                </div>
 
-                <span class="project-view">
-                    View Project →
-                </span>
+
+                <div class="project-card-content">
+
+                    <h3>
+                        School Attendance Portal
+                    </h3>
+
+                    <p>
+                        A web-based student management system designed to manage
+                        student and teacher information and attendance records.
+                    </p>
+
+                    <p class="project-tech">
+                        Next.js • TypeScript • React • Prisma • MySQL
+                    </p>
+
+                    <span class="project-view">
+                        View Project
+                    </span>
+
+                </div>
 
             </a>
 
@@ -260,22 +351,34 @@ Julius Portfolio
             <a href="{% url 'project_detail' 'django-portfolio' %}"
                class="project-card">
 
-                <h3>
-                    Django Portfolio
-                </h3>
+                <div class="project-image">
 
-                <p>
-                    A personal portfolio website built using
-                    Django, HTML, CSS, and JavaScript.
-                </p>
+                    <img src="{% static 'images/projects/project2/portfolio_ss1.png' %}"
+                         alt="Django Portfolio">
 
-                <p class="project-tech">
-                    Python • Django • HTML • CSS • JavaScript • Git • GitHub
-                </p>
+                </div>
 
-                <span class="project-view">
-                    View Project →
-                </span>
+
+                <div class="project-card-content">
+
+                    <h3>
+                        Django Portfolio
+                    </h3>
+
+                    <p>
+                        A personal portfolio website built using
+                        Django, HTML, CSS, and JavaScript.
+                    </p>
+
+                    <p class="project-tech">
+                        Python • Django • HTML • CSS • JavaScript • Git • GitHub
+                    </p>
+
+                    <span class="project-view">
+                        View Project
+                    </span>
+
+                </div>
 
             </a>
 
@@ -285,23 +388,35 @@ Julius Portfolio
             <a href="{% url 'project_detail' 'e-commerce-website' %}"
                class="project-card">
 
-                <h3>
-                    E-Commerce Website
-                </h3>
+                <div class="project-image">
 
-                <p>
-                    An e-commerce website with product
-                    management, shopping cart, and order
-                    functionality.
-                </p>
+                    <img src="{% static 'images/projects/project3/ecom_ss5.png' %}"
+                         alt="E-Commerce Website">
 
-                <p class="project-tech">
-                    Django • Python • SQLite • HTML • CSS • Javascript
-                </p>
+                </div>
 
-                <span class="project-view">
-                    View Project →
-                </span>
+
+                <div class="project-card-content">
+
+                    <h3>
+                        E-Commerce Website
+                    </h3>
+
+                    <p>
+                        An e-commerce website with product
+                        management, shopping cart, and order
+                        functionality.
+                    </p>
+
+                    <p class="project-tech">
+                        Django • Python • SQLite • HTML • CSS • Javascript
+                    </p>
+
+                    <span class="project-view">
+                        View Project
+                    </span>
+
+                </div>
 
             </a>
 
@@ -492,6 +607,60 @@ Julius Portfolio
 
 </section>
 <script>
+const aboutSection = document.querySelector(".about-section");
+const aboutTitle = document.querySelector(".about-content h2");
+const aboutParagraph = document.querySelector(
+    ".about-content p:not(.section-label)"
+);
+
+let originalAboutText = aboutParagraph
+    ? aboutParagraph.textContent.trim()
+    : "";
+
+let aboutTyping = null;
+
+function typeAboutText() {
+    if (!aboutParagraph) return;
+
+    clearInterval(aboutTyping);
+
+    aboutParagraph.textContent = "";
+
+    let index = 0;
+
+    aboutTyping = setInterval(() => {
+        aboutParagraph.textContent += originalAboutText[index];
+
+        index++;
+
+        if (index >= originalAboutText.length) {
+            clearInterval(aboutTyping);
+        }
+    }, 25);
+}
+
+const aboutObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+                aboutTitle.classList.remove("about-pop");
+                void aboutTitle.offsetWidth;
+                aboutTitle.classList.add("about-pop");
+                typeAboutText();
+            } else {
+                aboutTitle.classList.remove("about-pop");
+            }
+        });
+    },
+    {
+        threshold: 0.45
+    }
+);
+
+if (aboutSection) {
+    aboutObserver.observe(aboutSection);
+}
 document.addEventListener("DOMContentLoaded", function () {
 
     const loader = document.getElementById("portfolio-loader");
