@@ -60,49 +60,6 @@ PROJECTS = {
         ],
     },
 
-
-    'django-portfolio': {
-        'title': 'Django Portfolio',
-
-        'description':
-            'A personal portfolio website built using Django, HTML, CSS, and JavaScript.',
-
-        'documentation':
-            'The Django Portfolio is a personal website developed to present my software development projects, technical skills, and background in a clean and responsive interface. The website also provides detailed project pages where visitors can explore project descriptions, features, technologies, and screenshots.',
-
-        'functionality':
-            'The website provides a single-page portfolio experience with sections for my introduction, skills, projects, and contact information. Visitors can browse my projects, open dedicated project detail pages, view project screenshots in an enlarged image viewer, and send a message through the contact form.',
-
-        'technologies': [
-            'Python',
-            'Django',
-            'HTML',
-            'CSS',
-            'JavaScript',
-            'Git',
-            'GitHub',
-        ],
-        'features': [
-            'Responsive personal portfolio interface designed for desktop',
-            'Single-page navigation with smooth scrolling between portfolio sections',
-            'Project showcase displaying project descriptions, technologies, and screenshots'
-            'Dedicated project detail pages with documentation, functionality, features, and technologies used',
-            'Interactive project screenshot viewer for viewing images in an enlarged modal',
-            'Skills section showcasing my programming languages, frameworks, and development tools',
-            'Contact form that allows visitors to send messages directly through email',
-            
-        ],
-
-        'screenshots': [
-            'images/projects/project2/portfolio_ss1.png',
-            'images/projects/project2/portfolio_ss2.png',
-            'images/projects/project2/portfolio_ss3.png',
-            'images/projects/project2/portfolio_ss4.png',
-            'images/projects/project2/portfolio_ss5.png',
-        ],
-    },
-
-
     'e-commerce-website': {
         'title': 'E-Commerce Website',
 

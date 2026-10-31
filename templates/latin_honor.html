@@ -1,80 +1,132 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block body_class %}achievement-page{% endblock %}
+
+{% block title %}Latin Honor | Julius Portfolio{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/achievements.css' %}">
 {% endblock %}
 
 {% block content %}
-
 <section class="achievement-detail-page">
-
-    <div class="achievement-background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <div class="achievement-atmosphere" aria-hidden="true">
+        <span class="achievement-orb orb-a"></span>
+        <span class="achievement-orb orb-b"></span>
+        <span class="achievement-orb orb-c"></span>
+        <span class="achievement-grid"></span>
+        <span class="achievement-spark spark-a"></span>
+        <span class="achievement-spark spark-b"></span>
+        <span class="achievement-spark spark-c"></span>
+        <span class="achievement-spark spark-d"></span>
     </div>
 
-    <div class="achievement-orb achievement-orb-one"></div>
-    <div class="achievement-orb achievement-orb-two"></div>
-    <div class="achievement-orb achievement-orb-three"></div>
+    <div class="achievement-shell">
+        <div class="achievement-toolbar">
+            <button type="button" class="achievement-back" id="achievement-back">
+                <span class="back-arrow" aria-hidden="true">←</span>
+                <span>Back to portfolio</span>
+            </button>
 
-    <div class="achievement-detail-container">
+            <button type="button" class="achievement-theme-toggle" id="achievement-theme-toggle"
+                    aria-label="Switch to dark mode" title="Switch theme">
+                <span class="achievement-theme-icon" aria-hidden="true">☾</span>
+                <span class="achievement-theme-label">Dark mode</span>
+            </button>
+        </div>
 
-       <a href="javascript:history.back()" class="achievement-back" aria-label="Go back">
-            ‹
-        </a>
-
-        <div class="achievement-header">
-
-            <p class="achievement-label">
-                ACHIEVEMENT
-            </p>
-
+        <header class="achievement-heading">
+            <div class="achievement-eyebrow">
+                <span class="eyebrow-line"></span>
+                <span>PERSONAL MILESTONE</span>
+                <span class="eyebrow-line"></span>
+            </div>
             <h1>Latin Honor</h1>
+            <p class="achievement-subtitle">A milestone in my academic and professional journey</p>
+            <div class="achievement-meta">
+                <span class="meta-dot"></span>
+                <span>ACHIEVED</span>
+                <span class="meta-divider">/</span>
+                <strong>2026</strong>
+            </div>
+        </header>
 
-            <div class="achievement-year">
-                2026
+        <article class="achievement-showcase">
+            <div class="showcase-topline">
+                <span><span class="status-dot"></span> VERIFIED MILESTONE</span>
+                <span class="showcase-index">JBN / 2026</span>
             </div>
 
-        </div>
-
-        <div class="achievement-image-wrapper">
-
-            <div class="achievement-image-glow"></div>
-
-            <div class="achievement-image-card">
-
-                <img
-                    src="{% static 'images/achievements/latinhonor.jpg' %}"
-                    alt="Latin Honor Certificate"
-                >
-
+            <div class="achievement-image-frame">
+                <div class="image-corner corner-tl"></div>
+                <div class="image-corner corner-tr"></div>
+                <div class="image-corner corner-bl"></div>
+                <div class="image-corner corner-br"></div>
+                <img src="{% static 'images/achievements/latinhonor.jpg' %}" alt="Cum Laude recognition" loading="eager">
             </div>
 
+            <div class="achievement-caption">
+                <div class="caption-mark" aria-hidden="true">✦</div>
+                <p>Being awarded Cum Laude upon graduating from City of Malabon University on June 27, 2026, is a proud achievement in my academic journey. This Latin honor recognizes my academic performance and marks the successful completion of my Bachelor of Science in Information Technology degree.</p>
+            </div>
+        </article>
+
+        <div class="achievement-footer-note">
+            <span>JULIUS B. NEGRO</span>
+            <span class="footer-note-line"></span>
+            <span>PORTFOLIO&nbsp; · &nbsp;ACHIEVEMENTS</span>
         </div>
-
-        <div class="achievement-description">
-
-            <p>
-                Being awarded Cum Laude upon graduating from City of Malabon 
-                University on June 27, 2026, is a proud achievement in my academic 
-                journey. This Latin honor recognizes my academic performance and 
-                marks the successful completion of my Bachelor of Science in Information
-                Technology degree.
-            </p>
-
-        </div>
-
     </div>
-
 </section>
 
+<script>
+(() => {
+    const toggle = document.getElementById("achievement-theme-toggle");
+    const back = document.getElementById("achievement-back");
+    const icon = toggle.querySelector(".achievement-theme-icon");
+    const label = toggle.querySelector(".achievement-theme-label");
+    const root = document.documentElement;
+    const body = document.body;
+    const THEME_KEY = "portfolio-theme";
+
+    function applyTheme(theme, save = false) {
+        const normalized = theme === "dark" ? "dark" : "light";
+        const isDark = normalized === "dark";
+
+        body.classList.toggle("dark-mode", isDark);
+        body.classList.toggle("light-mode", !isDark);
+        root.setAttribute("data-theme", normalized);
+
+        icon.textContent = isDark ? "☀" : "☾";
+        label.textContent = isDark ? "Light mode" : "Dark mode";
+        toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        toggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.setAttribute("content", isDark ? "#0b1220" : "#f4f7fc");
+
+        if (save) {
+            try { localStorage.setItem(THEME_KEY, normalized); } catch (error) {}
+        }
+    }
+
+    let savedTheme = "light";
+    try { savedTheme = localStorage.getItem(THEME_KEY) || "light"; } catch (error) {}
+    applyTheme(savedTheme);
+
+    toggle.addEventListener("click", () => {
+        const nextTheme = body.classList.contains("dark-mode") ? "light" : "dark";
+        applyTheme(nextTheme, true);
+    });
+
+    window.addEventListener("storage", event => {
+        if (event.key === THEME_KEY) applyTheme(event.newValue || "light");
+    });
+
+    back.addEventListener("click", () => {
+        window.location.assign("/");
+    });
+})();
+</script>
 {% endblock %}

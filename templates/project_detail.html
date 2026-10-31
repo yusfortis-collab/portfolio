@@ -882,6 +882,184 @@
             }
         }
 
+
+
+        /* MODERN PROJECT DETAIL VISUAL REFRESH */
+        body {
+            background: radial-gradient(circle at 12% 8%, rgba(244,125,91,.18), transparent 32%),
+                        radial-gradient(circle at 90% 30%, rgba(91,145,190,.15), transparent 30%),
+                        linear-gradient(135deg, #0b1020, #151d30 55%, #101827) !important;
+            color: #f7f7fb !important;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+        }
+        .project-detail { max-width: 1200px !important; padding: clamp(34px, 6vw, 82px) clamp(18px, 5vw, 60px) !important; }
+        .back-button { border-radius: 999px !important; padding: 12px 20px !important; background: rgba(255,255,255,.075) !important; border-color: rgba(255,255,255,.16) !important; backdrop-filter: blur(18px) !important; }
+        .project-detail-header { position: relative !important; padding: clamp(28px, 5vw, 58px) !important; margin-bottom: 58px !important; border-radius: 30px !important; overflow: hidden !important; background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.035)) !important; border: 1px solid rgba(255,255,255,.14) !important; box-shadow: 0 28px 80px rgba(0,0,0,.22) !important; backdrop-filter: blur(18px) !important; }
+        .project-detail-header::after { content:""; position:absolute; width:280px; height:280px; right:-90px; top:-120px; border-radius:50%; background:radial-gradient(circle,rgba(244,125,91,.35),transparent 70%); pointer-events:none; }
+        .section-label { color: #ffad8c !important; letter-spacing: 2.5px !important; }
+        .project-detail-header h1 { font-size: clamp(34px, 5.5vw, 64px) !important; letter-spacing: -1.8px !important; line-height: 1.04 !important; }
+        .project-detail-description { font-size: clamp(15px, 1.8vw, 19px) !important; color: rgba(240,244,252,.76) !important; max-width: 850px !important; }
+        .project-detail-section { margin-bottom: 58px !important; padding: clamp(22px, 3.5vw, 34px) !important; border-radius: 26px !important; background: rgba(255,255,255,.045) !important; border: 1px solid rgba(255,255,255,.09) !important; box-shadow: 0 18px 50px rgba(0,0,0,.12) !important; }
+        .project-detail-section h2 { font-size: clamp(24px, 3vw, 34px) !important; letter-spacing: -.7px !important; }
+        .feature-card, .technology-list span, .screenshot-card, .documentation-card { border-radius: 18px !important; }
+        .feature-card { background: rgba(255,255,255,.065) !important; border: 1px solid rgba(255,255,255,.10) !important; }
+        .technology-list span { padding: 9px 14px !important; background: rgba(244,125,91,.12) !important; border: 1px solid rgba(244,125,91,.22) !important; color: #ffb08f !important; }
+        .project-detail img { border-radius: 16px !important; }
+        .image-modal { backdrop-filter: blur(14px) !important; }
+        @media (max-width: 700px) { .project-detail-header { border-radius: 22px !important; } .project-detail-section { border-radius: 20px !important; } }
+
+
+        /* =========================================================
+           INDIVIDUAL PROJECT PAGE THEME SYSTEM
+           The switch applies to the entire project detail page.
+        ========================================================= */
+        :root {
+            color-scheme: dark;
+            --project-page-bg: #0b1020;
+            --project-page-text: #f7f8fc;
+            --project-muted-text: #b7c0d1;
+            --project-panel: rgba(255,255,255,.055);
+            --project-panel-strong: rgba(255,255,255,.085);
+            --project-panel-border: rgba(255,255,255,.12);
+            --project-accent: #ffad8c;
+            --project-accent-soft: rgba(244,125,91,.13);
+            --project-shadow: 0 18px 50px rgba(0,0,0,.18);
+            --project-carousel-bg: #111a2c;
+        }
+
+        body.project-detail-page[data-theme="light"] {
+            color-scheme: light;
+            --project-page-bg: #f3f6fb;
+            --project-page-text: #182235;
+            --project-muted-text: #596579;
+            --project-panel: rgba(255,255,255,.88);
+            --project-panel-strong: #ffffff;
+            --project-panel-border: rgba(35,52,78,.12);
+            --project-accent: #b94f2c;
+            --project-accent-soft: rgba(217,103,64,.10);
+            --project-shadow: 0 18px 48px rgba(37,55,82,.10);
+            --project-carousel-bg: #e8edf5;
+        }
+
+        body.project-detail-page {
+            background:
+                radial-gradient(circle at 12% 8%, var(--project-accent-soft), transparent 32%),
+                radial-gradient(circle at 90% 30%, rgba(91,145,190,.12), transparent 30%),
+                linear-gradient(135deg, var(--project-page-bg), var(--project-page-bg)) !important;
+            color: var(--project-page-text) !important;
+            transition: background .35s ease, color .35s ease;
+        }
+
+        .project-theme-row {
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 18px;
+            margin: -12px 0 22px;
+        }
+
+        .project-theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 44px;
+            padding: 0 17px;
+            border: 1px solid var(--project-panel-border);
+            border-radius: 999px;
+            background: var(--project-panel-strong);
+            color: var(--project-page-text);
+            box-shadow: var(--project-shadow);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            backdrop-filter: blur(14px);
+            transition: transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+        }
+        .project-theme-toggle:hover {
+            transform: translateY(-2px);
+            border-color: var(--project-accent);
+            background: var(--project-accent-soft);
+        }
+        .project-theme-toggle:focus-visible {
+            outline: 3px solid var(--project-accent);
+            outline-offset: 4px;
+        }
+        .theme-toggle-icon { font-size: 17px; line-height: 1; }
+
+        body.project-detail-page[data-theme="light"] .project-detail-header,
+        body.project-detail-page[data-theme="light"] .project-detail-section {
+            background: var(--project-panel) !important;
+            border-color: var(--project-panel-border) !important;
+            box-shadow: var(--project-shadow) !important;
+        }
+        body.project-detail-page[data-theme="light"] .project-detail-header::after {
+            background: radial-gradient(circle, rgba(217,103,64,.13), transparent 70%);
+        }
+        body.project-detail-page[data-theme="light"] .project-detail-header h1,
+        body.project-detail-page[data-theme="light"] .project-detail-section h2,
+        body.project-detail-page[data-theme="light"] .project-detail-section h3 {
+            color: var(--project-page-text) !important;
+        }
+        body.project-detail-page[data-theme="light"] .section-label { color: #b94f2c !important; }
+        body.project-detail-page[data-theme="light"] .project-detail-description,
+        body.project-detail-page[data-theme="light"] .documentation-text,
+        body.project-detail-page[data-theme="light"] .feature-card p {
+            color: var(--project-muted-text) !important;
+        }
+        body.project-detail-page[data-theme="light"] .feature-card {
+            background: rgba(248,250,253,.96) !important;
+            border-color: rgba(35,52,78,.10) !important;
+            box-shadow: 0 8px 24px rgba(37,55,82,.045);
+        }
+        body.project-detail-page[data-theme="light"] .feature-card:hover {
+            background: #fff !important;
+            border-color: rgba(185,79,44,.28) !important;
+            box-shadow: 0 14px 30px rgba(37,55,82,.10) !important;
+        }
+        body.project-detail-page[data-theme="light"] .feature-icon {
+            color: #b94f2c !important;
+            background: rgba(217,103,64,.10) !important;
+            border-color: rgba(185,79,44,.22) !important;
+        }
+        body.project-detail-page[data-theme="light"] .technology-list span {
+            color: #9d4326 !important;
+            background: rgba(217,103,64,.09) !important;
+            border-color: rgba(185,79,44,.20) !important;
+        }
+        body.project-detail-page[data-theme="light"] .back-button {
+            color: #273449 !important;
+            background: rgba(255,255,255,.82) !important;
+            border-color: rgba(35,52,78,.14) !important;
+        }
+        body.project-detail-page[data-theme="light"] .project-carousel {
+            background: var(--project-carousel-bg) !important;
+            border-color: rgba(35,52,78,.13) !important;
+            box-shadow: 0 22px 50px rgba(37,55,82,.12) !important;
+        }
+        body.project-detail-page[data-theme="light"] .carousel-arrow,
+        body.project-detail-page[data-theme="light"] .carousel-counter {
+            color: #243148 !important;
+            background: rgba(255,255,255,.90) !important;
+            border-color: rgba(35,52,78,.14) !important;
+        }
+        body.project-detail-page[data-theme="light"] .image-modal { background: rgba(20,29,44,.88) !important; }
+
+        /* Give the screenshot carousel and Key Features their own breathing room. */
+        .project-carousel { margin-bottom: 82px !important; }
+        .project-detail-section { margin-top: 0 !important; margin-bottom: 72px !important; }
+        .project-detail-section .features-grid { margin-top: 24px !important; row-gap: 22px !important; }
+        .project-detail-section h2 { margin-bottom: 25px !important; }
+        .project-detail-header { margin-bottom: 62px !important; }
+
+        @media (max-width: 700px) {
+            .project-theme-row { padding-left: 8px; margin-top: -8px; margin-bottom: 18px; }
+            .project-theme-toggle { min-height: 42px; padding: 0 14px; }
+            .project-carousel { margin-bottom: 54px !important; }
+            .project-detail-section { margin-bottom: 48px !important; }
+        }
+
     </style>
 
 </head>
@@ -902,10 +1080,18 @@
 
 </div>
 
-<body>
+<body class="project-detail-page">
 
     <main class="project-detail">
 
+        <!-- Theme switch for this individual project page -->
+        <div class="project-theme-row">
+            <button type="button" class="project-theme-toggle" id="projectThemeToggle"
+                    aria-label="Switch to light mode" title="Switch theme">
+                <span class="theme-toggle-icon" aria-hidden="true">☀</span>
+                <span class="theme-toggle-label">Light mode</span>
+            </button>
+        </div>
 
         <a href="{% url 'home' %}#projects"
            class="back-button">
@@ -1066,6 +1252,66 @@
 
     </main>
 <script>
+    // Shared portfolio theme: homepage, project pages, and achievement pages.
+    (function () {
+        const page = document.body;
+        const toggle = document.getElementById("projectThemeToggle");
+        const icon = toggle ? toggle.querySelector(".theme-toggle-icon") : null;
+        const label = toggle ? toggle.querySelector(".theme-toggle-label") : null;
+        const storageKey = "portfolio-theme";
+
+        function applyPortfolioTheme(theme) {
+            const normalized = theme === "dark" ? "dark" : "light";
+            const isDark = normalized === "dark";
+
+            page.setAttribute("data-theme", normalized);
+            page.classList.toggle("dark-mode", isDark);
+            page.classList.toggle("light-mode", !isDark);
+            document.documentElement.setAttribute("data-theme", normalized);
+
+            if (icon) icon.textContent = isDark ? "☀" : "☾";
+            if (label) label.textContent = isDark ? "Light mode" : "Dark mode";
+            if (toggle) {
+                const action = isDark ? "Switch to light mode" : "Switch to dark mode";
+                toggle.setAttribute("aria-label", action);
+                toggle.setAttribute("title", action);
+            }
+        }
+
+        function readSavedTheme() {
+            try {
+                return localStorage.getItem(storageKey) || "light";
+            } catch (error) {
+                return "light";
+            }
+        }
+
+        // Read exactly the same preference used by base.html.
+        applyPortfolioTheme(readSavedTheme());
+
+        toggle?.addEventListener("click", function () {
+            const nextTheme = page.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            try {
+                localStorage.setItem(storageKey, nextTheme);
+            } catch (error) {
+                console.warn("Unable to save the portfolio theme.");
+            }
+            applyPortfolioTheme(nextTheme);
+        });
+
+        // Keep this page in sync if the homepage is open in another tab.
+        window.addEventListener("storage", function (event) {
+            if (event.key === storageKey) {
+                applyPortfolioTheme(event.newValue || "light");
+            }
+        });
+
+        // Also respond to same-tab theme updates dispatched by other page scripts.
+        window.addEventListener("portfolio-theme-change", function (event) {
+            applyPortfolioTheme(event.detail?.theme || readSavedTheme());
+        });
+    })();
+
     function openImage(image) {
 
         const modal =

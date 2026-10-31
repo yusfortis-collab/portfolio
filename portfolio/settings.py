@@ -25,6 +25,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'yusfortis.pythonanywhere.com',
+    '192.168.0.118'
 ]
 
 

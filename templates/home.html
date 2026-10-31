@@ -1,35 +1,21 @@
-
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}
 Julius Portfolio
 {% endblock %}
 
-
 {% block content %}
-<!-- =========================
-     PORTFOLIO LOADING SCREEN
-========================= -->
 
 <div id="portfolio-loader">
-
     <div class="loader-content">
-
         <div class="loader-ring"></div>
-
-        <div class="loader-letter">
-            J
-        </div>
-
+        <div class="loader-letter">J</div>
     </div>
-
 </div>
 
-<!-- =========================
-     HOME
-========================= -->
-
 <section id="home" class="home-section">
+
     <div class="binary-rain" aria-hidden="true">
         <span>010101<br>110010<br>001101<br>101011<br>010110<br>111001</span>
         <span>101010<br>011001<br>110101<br>001110<br>101101<br>010011</span>
@@ -51,40 +37,43 @@ Julius Portfolio
     <div class="home-profile">
 
         <img
-            src= "{% static 'images/myimage.png'%}"
+            src="{% static 'images/myimage.png' %}"
             alt="Julius B. Negro"
             class="profile-image"
         >
+
         <div class="profile-orbit">
 
             <div class="app-icon icon-nextjs">
-                <img src="{% static 'images/icons/Next.js.png'%}" alt="Next.js">
+                <img src="{% static 'images/icons/Next.js.png' %}" alt="Next.js">
             </div>
 
             <div class="app-icon icon-typescript">
-                <img src="{% static 'images/icons/typescript.png'%}" alt="TypeScript">
+                <img src="{% static 'images/icons/typescript.png' %}" alt="TypeScript">
             </div>
 
             <div class="app-icon icon-django">
-                <img src="{% static 'images/icons/Django.png'%}" alt="Django">
+                <img src="{% static 'images/icons/Django.png' %}" alt="Django">
             </div>
 
             <div class="app-icon icon-python">
-                <img src="{% static 'images/icons/Python.png'%}" alt="Python">
+                <img src="{% static 'images/icons/Python.png' %}" alt="Python">
             </div>
 
             <div class="app-icon icon-github">
-                <img src="{% static 'images/icons/GitHub.png'%}" alt="GitHub">
+                <img src="{% static 'images/icons/GitHub.png' %}" alt="GitHub">
             </div>
-            <div class="app-icon icon-vscode" alt="Visual Studio Code">
-                <img src="{% static 'images/icons/Visual Studio Code (VS Code).png'%}" alt="Visual Studio Code">
+
+            <div class="app-icon icon-vscode">
+                <img src="{% static 'images/icons/Visual Studio Code (VS Code).png' %}" alt="Visual Studio Code">
             </div>
+
         </div>
 
     </div>
 
     <div class="home-content">
-        
+
         <p class="home-greeting">
             HELLO, I'M
         </p>
@@ -99,10 +88,9 @@ Julius Portfolio
             Aspiring Web Developer
         </h2>
 
-
         <p class="home-description">
-            An IT graduate focused on building practical, 
-            user-friendly digital solutions through web 
+            An IT graduate focused on building practical,
+            user-friendly digital solutions through web
             development and modern technologies.
         </p>
 
@@ -119,28 +107,41 @@ Julius Portfolio
         </div>
 
     </div>
+
     <div class="home-animation">
+
         <div class="glow-orb"></div>
+
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
         <div class="orbit orbit-three"></div>
 
         <div class="code-symbol symbol-one">&lt;/&gt;</div>
-        <div class="code-symbol symbol-two"> { } </div>
-        <div class="code-symbol symbol-three"> &lt; / &gt; </div>
-        <div class="code-symbol symbol-four"> #_ </div>
+        <div class="code-symbol symbol-two">{ }</div>
+        <div class="code-symbol symbol-three">&lt; / &gt;</div>
+        <div class="code-symbol symbol-four">#_</div>
+
         <div class="floating-dot dot-one"></div>
         <div class="floating-dot dot-two"></div>
         <div class="floating-dot dot-three"></div>
         <div class="floating-dot dot-four"></div>
+
+    </div>
+
+
+    <div class="developer-marquee" aria-hidden="true">
+        <div class="developer-marquee-track">
+            <span>FULL STACK DEVELOPER</span>
+            <span>FULL STACK DEVELOPER</span>
+            <span>FULL STACK DEVELOPER</span>
+            <span>FULL STACK DEVELOPER</span>
+        </div>
     </div>
 
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+
 
 <section id="about" class="about-section">
 
@@ -155,51 +156,58 @@ Julius Portfolio
         </h2>
 
         <p class="section-description">
-            I am an Information Technology fresh graduate with a strong passion for software development 
-            and web technologies. I enjoy learning new technologies, building applications, solving programming 
-            challenges, and transforming ideas into functional and user-friendly software. I am eager to apply my 
+            I am an Information Technology fresh graduate with a strong passion for software development
+            and web technologies. I enjoy learning new technologies, building applications, solving programming
+            challenges, and transforming ideas into functional and user-friendly software. I am eager to apply my
             skills, continue growing as a developer, and contribute to meaningful projects in the technology industry.
         </p>
 
-    <div class="achievements-grid">
+        <div class="achievements-grid">
 
-        <a href="{% url 'internship' %}" class="achievement-card">
-            <div class="achievement-card-content">
-                <h3>INTERNSHIP</h3>
-                <span class="achievement-year">2026</span>
-            </div>
+            <a href="{% url 'internship' %}" class="achievement-card">
 
-            <span class="achievement-view">
-                View <span>↗</span>
-            </span>
-        </a>
+                <div class="achievement-card-content">
+                    <h3>INTERNSHIP</h3>
+                    <span class="achievement-year">2026</span>
+                </div>
 
-        <a href="{% url 'diploma' %}" class="achievement-card">
-            <div class="achievement-card-content">
-                <h3>DIPLOMA</h3>
-                <span class="achievement-year">2026</span>
-            </div>
+                <span class="achievement-view">
+                    View <span>↗</span>
+                </span>
 
-            <span class="achievement-view">
-                View <span>↗</span>
-            </span>
-        </a>
+            </a>
 
-        <a href="{% url 'latin_honor' %}" class="achievement-card">
-            <div class="achievement-card-content">
-                <h3>LATIN HONOR</h3>
-                <span class="achievement-year">2026</span>
-            </div>
+            <a href="{% url 'diploma' %}" class="achievement-card">
 
-            <span class="achievement-view">
-                View <span>↗</span>
-            </span>
-        </a>
+                <div class="achievement-card-content">
+                    <h3>DIPLOMA</h3>
+                    <span class="achievement-year">2026</span>
+                </div>
+
+                <span class="achievement-view">
+                    View <span>↗</span>
+                </span>
+
+            </a>
+
+            <a href="{% url 'latin_honor' %}" class="achievement-card">
+
+                <div class="achievement-card-content">
+                    <h3>LATIN HONOR</h3>
+                    <span class="achievement-year">2026</span>
+                </div>
+
+                <span class="achievement-view">
+                    View <span>↗</span>
+                </span>
+
+            </a>
+
+        </div>
 
     </div>
 
-    </div>
-        <div class="about-animation">
+    <div class="about-animation">
 
         <div class="question-mark">?</div>
 
@@ -216,14 +224,11 @@ Julius Portfolio
 </section>
 
 
-<!-- =========================
-     SKILLS
-========================= -->
 
 <section id="skills" class="section animated-section">
 
-
     <div class="skills-background">
+
         <span class="skills-orb orb-1"></span>
         <span class="skills-orb orb-2"></span>
         <span class="skills-orb orb-3"></span>
@@ -236,9 +241,8 @@ Julius Portfolio
         <span class="skills-particle particle-6"></span>
 
         <div class="skills-grid-lines"></div>
+
     </div>
-
-
 
     <div class="section-container">
 
@@ -250,37 +254,50 @@ Julius Portfolio
             What I Use
         </h2>
 
-
         <div class="skills-grid">
 
             <div class="skill-card">
                 <h3>Django Framework</h3>
-                <p>Python web framework used for backend development, APIs, authentication, and database management.</p>
+                <p>
+                    Python web framework used for backend development,
+                    APIs, authentication, and database management.
+                </p>
             </div>
 
             <div class="skill-card">
                 <h3>Next.js (TypeScript + React)</h3>
-                <p>Framework for building modern, responsive, and scalable web applications and user interfaces.</p>
+                <p>
+                    Framework for building modern, responsive,
+                    and scalable web applications and user interfaces.
+                </p>
             </div>
 
             <div class="skill-card">
                 <h3>MySQL</h3>
-                <p>Designing and managing relational databases.</p>
+                <p>
+                    Designing and managing relational databases.
+                </p>
             </div>
 
             <div class="skill-card">
                 <h3>GitHub</h3>
-                <p>Version control and project management.</p>
+                <p>
+                    Version control and project management.
+                </p>
             </div>
 
             <div class="skill-card">
                 <h3>HTML & CSS</h3>
-                <p>Building responsive and modern websites.</p>
+                <p>
+                    Building responsive and modern websites.
+                </p>
             </div>
 
             <div class="skill-card">
                 <h3>Microsoft Office</h3>
-                <p>Creating and managing documents, spreadsheets, and presentations.</p>
+                <p>
+                    Creating and managing documents, spreadsheets, and presentations.
+                </p>
             </div>
 
         </div>
@@ -289,9 +306,7 @@ Julius Portfolio
 
 </section>
 
-<!-- =========================
-     PROJECTS
-========================= -->
+
 
 <section id="projects" class="section">
 
@@ -305,22 +320,23 @@ Julius Portfolio
             Projects
         </h2>
 
-
         <div class="projects-grid">
-
 
             <!-- STUDENT PORTAL -->
 
-            <a href="{% url 'project_detail' 'student-portal' %}"
-               class="project-card">
+            <a
+                href="{% url 'project_detail' 'student-portal' %}"
+                class="project-card"
+            >
 
                 <div class="project-image">
 
-                    <img src="{% static 'images/projects/project1/studentportal_ss2.png' %}"
-                         alt="School Attendance Portal">
+                    <img
+                        src="{% static 'images/projects/project1/studentportal_ss2.png' %}"
+                        alt="School Attendance Portal"
+                    >
 
                 </div>
-
 
                 <div class="project-card-content">
 
@@ -346,55 +362,21 @@ Julius Portfolio
             </a>
 
 
-            <!-- DJANGO PORTFOLIO -->
-
-            <a href="{% url 'project_detail' 'django-portfolio' %}"
-               class="project-card">
-
-                <div class="project-image">
-
-                    <img src="{% static 'images/projects/project2/portfolio_ss1.png' %}"
-                         alt="Django Portfolio">
-
-                </div>
-
-
-                <div class="project-card-content">
-
-                    <h3>
-                        Django Portfolio
-                    </h3>
-
-                    <p>
-                        A personal portfolio website built using
-                        Django, HTML, CSS, and JavaScript.
-                    </p>
-
-                    <p class="project-tech">
-                        Python • Django • HTML • CSS • JavaScript • Git • GitHub
-                    </p>
-
-                    <span class="project-view">
-                        View Project
-                    </span>
-
-                </div>
-
-            </a>
-
-
             <!-- E-COMMERCE WEBSITE -->
 
-            <a href="{% url 'project_detail' 'e-commerce-website' %}"
-               class="project-card">
+            <a
+                href="{% url 'project_detail' 'e-commerce-website' %}"
+                class="project-card"
+            >
 
                 <div class="project-image">
 
-                    <img src="{% static 'images/projects/project3/ecom_ss5.png' %}"
-                         alt="E-Commerce Website">
+                    <img
+                        src="{% static 'images/projects/project3/ecom_ss5.png' %}"
+                        alt="E-Commerce Website"
+                    >
 
                 </div>
-
 
                 <div class="project-card-content">
 
@@ -403,13 +385,12 @@ Julius Portfolio
                     </h3>
 
                     <p>
-                        An e-commerce website with product
-                        management, shopping cart, and order
-                        functionality.
+                        An e-commerce website with product management,
+                        shopping cart, and order functionality.
                     </p>
 
                     <p class="project-tech">
-                        Django • Python • SQLite • HTML • CSS • Javascript
+                        Django • Python • SQLite • HTML • CSS • JavaScript
                     </p>
 
                     <span class="project-view">
@@ -420,7 +401,6 @@ Julius Portfolio
 
             </a>
 
-
         </div>
 
     </div>
@@ -428,9 +408,6 @@ Julius Portfolio
 </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
 
 <section id="contact" class="section contact-section">
 
@@ -445,17 +422,14 @@ Julius Portfolio
         </h2>
 
         <p class="section-description">
-
             If you are interested in working with me,
             or simply connecting,
             feel free to contact me.
-
         </p>
-
 
         <div class="contact-container">
 
-            <!-- CONTACT INFORMATION -->
+            
 
             <div class="contact-info">
 
@@ -466,17 +440,11 @@ Julius Portfolio
                     </div>
 
                     <div>
-
                         <h3>Email</h3>
-
-                        <p>
-                            juliusnegro4@gmail.com
-                        </p>
-
+                        <p>juliusnegro4@gmail.com</p>
                     </div>
 
                 </div>
-
 
                 <div class="contact-item">
 
@@ -485,17 +453,11 @@ Julius Portfolio
                     </div>
 
                     <div>
-
                         <h3>Phone</h3>
-
-                        <p>
-                            +63 997 166 6597
-                        </p>
-
+                        <p>+63 997 166 6597</p>
                     </div>
 
                 </div>
-
 
                 <div class="contact-item">
 
@@ -504,13 +466,8 @@ Julius Portfolio
                     </div>
 
                     <div>
-
                         <h3>Location</h3>
-
-                        <p>
-                            Malabon City, Philippines
-                        </p>
-
+                        <p>Malabon City, Philippines</p>
                     </div>
 
                 </div>
@@ -518,30 +475,32 @@ Julius Portfolio
             </div>
 
 
-            <!-- CONTACT FORM -->
-             {% if messages %}
-                {% for message in messages %}
-                <div class="toast-notification" id="toast-notification">
-                    <span class="toast-icon">✓</span>
-                    <span>{{ message }}</span>
-                </div>
-                {% endfor %}
-                <script>
-                    setTimeout(function() {
-                        const toast = document.getElementById('toast-notification');
-                        if (toast) {
-                            toast.classList.add('hide');
-
-                            setTimeout(function() {
-                                toast.remove();
-                            }, 400);
-                        }
-                    }, 5000);
-                </script>
-                
-            {% endif %}
             
-            <form class="contact-form" method="POST" action="#contact">
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="toast-notification" id="toast-notification">
+
+                        <span class="toast-icon">✓</span>
+                        <span>{{ message }}</span>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            
+
+            <form
+                class="contact-form"
+                method="POST"
+                action="#contact"
+            >
+
                 {% csrf_token %}
 
                 <div class="form-group">
@@ -560,7 +519,6 @@ Julius Portfolio
 
                 </div>
 
-
                 <div class="form-group">
 
                     <label for="email">
@@ -576,7 +534,6 @@ Julius Portfolio
                     >
 
                 </div>
-
 
                 <div class="form-group">
 
@@ -594,7 +551,6 @@ Julius Portfolio
 
                 </div>
 
-
                 <button type="submit">
                     Send Message →
                 </button>
@@ -606,83 +562,111 @@ Julius Portfolio
     </div>
 
 </section>
+
+
+
 <script>
-const aboutSection = document.querySelector(".about-section");
-const aboutTitle = document.querySelector(".about-content h2");
-const aboutParagraph = document.querySelector(
-    ".about-content p:not(.section-label)"
-);
-
-let originalAboutText = aboutParagraph
-    ? aboutParagraph.textContent.trim()
-    : "";
-
-let aboutTyping = null;
-
-function typeAboutText() {
-    if (!aboutParagraph) return;
-
-    clearInterval(aboutTyping);
-
-    aboutParagraph.textContent = "";
-
-    let index = 0;
-
-    aboutTyping = setInterval(() => {
-        aboutParagraph.textContent += originalAboutText[index];
-
-        index++;
-
-        if (index >= originalAboutText.length) {
-            clearInterval(aboutTyping);
-        }
-    }, 25);
-}
-
-const aboutObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-                aboutTitle.classList.remove("about-pop");
-                void aboutTitle.offsetWidth;
-                aboutTitle.classList.add("about-pop");
-                typeAboutText();
-            } else {
-                aboutTitle.classList.remove("about-pop");
-            }
-        });
-    },
-    {
-        threshold: 0.45
-    }
-);
-
-if (aboutSection) {
-    aboutObserver.observe(aboutSection);
-}
 document.addEventListener("DOMContentLoaded", function () {
 
-    const loader = document.getElementById("portfolio-loader");
+    const aboutSection = document.querySelector(".about-section");
+    const aboutTitle = document.querySelector(".about-content h2");
+    const aboutParagraph = document.querySelector(
+        ".about-content p:not(.section-label)"
+    );
+    const originalAboutText = aboutParagraph
+        ? aboutParagraph.textContent.trim()
+        : "";
+    let aboutTyping = null;
 
-    if (!loader) {
-        return;
+    function typeAboutText() {
+        if (!aboutParagraph || !originalAboutText) return;
+        clearInterval(aboutTyping);
+        aboutParagraph.textContent = "";
+        let index = 0;
+        aboutTyping = window.setInterval(() => {
+            aboutParagraph.textContent += originalAboutText[index] || "";
+            index += 1;
+            if (index >= originalAboutText.length) {
+                clearInterval(aboutTyping);
+            }
+        }, 25);
+    }
+
+    if (aboutSection && aboutTitle && aboutParagraph && "IntersectionObserver" in window) {
+        let aboutHasAnimated = false;
+        const aboutObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !aboutHasAnimated) {
+                    aboutHasAnimated = true;
+                    aboutTitle.classList.add("about-pop");
+                    typeAboutText();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+        aboutObserver.observe(aboutSection);
     }
 
 
-    setTimeout(function () {
+    const revealSelectors = [
+        "#about .about-content",
+        "#about .about-animation",
+        "#about .achievement-card",
+        "#skills .section-label",
+        "#skills .section-container > h2",
+        "#skills .skill-card",
+        "#projects .section-label",
+        "#projects .section-container > h2",
+        "#projects .project-card",
+        "#contact .section-label",
+        "#contact .section-container > h2",
+        "#contact .section-description",
+        "#contact .contact-info",
+        "#contact .contact-form"
+    ];
 
-        loader.classList.add("loader-hidden");
+    const revealElements = document.querySelectorAll(revealSelectors.join(","));
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (revealElements.length && "IntersectionObserver" in window && !prefersReducedMotion) {
+        document.body.classList.add("js-reveal");
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+        });
+
+        revealElements.forEach((element, index) => {
+            element.classList.add("scroll-reveal");
+            element.style.setProperty("--reveal-delay", `${(index % 4) * 90}ms`);
+            revealObserver.observe(element);
+        });
+    }
 
 
+    const loader = document.getElementById("portfolio-loader");
+    if (loader) {
+        window.setTimeout(() => {
+            loader.classList.add("loader-hidden");
+            window.setTimeout(() => loader.remove(), 900);
+        }, 1500);
+    }
 
-        setTimeout(function () {
-
-            loader.remove();
-
-        }, 900);
-
-    }, 1500);
+    const toast = document.getElementById("toast-notification");
+    if (toast) {
+        window.setTimeout(() => {
+            toast.classList.add("hide");
+            window.setTimeout(() => toast.remove(), 400);
+        }, 5000);
+    }
 
 });
 </script>

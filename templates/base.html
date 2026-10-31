@@ -1,70 +1,237 @@
 {% load static %}
-
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-{% block extra_css %}
-{% endblock %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff8f3">
 
-    <title>
-        {% block title %}
-            Julius Portfolio
-        {% endblock %}
-    </title>
+    <title>{% block title %}Julius Portfolio{% endblock %}</title>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/Portfolio_Icon.png' %}">
 
+    {% block extra_css %}{% endblock %}
 </head>
 
-<body>
+<body class="light-mode {% block body_class %}{% endblock %}">
 
-    <!-- NAVIGATION -->
-<nav class="navbar">
+    <!-- MAIN NAVIGATION -->
+    <nav class="navbar" aria-label="Main navigation">
 
-    <div class="logo">
-        JBN
-    </div>
+        <!-- Non-clickable JBN Logo -->
+        <div class="logo" aria-label="Julius B. Negro">
+            JBN
+        </div>
 
-    <div class="nav-links">
+        <div class="nav-links">
 
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+            <a href="#home" aria-label="Home" title="Home">
+                <span class="nav-link-icon" aria-hidden="true">⌂</span>
+                <span class="nav-link-text">Home</span>
+            </a>
 
-    </div>
+            <a href="#about" aria-label="About" title="About">
+                <span class="nav-link-icon" aria-hidden="true">◉</span>
+                <span class="nav-link-text">About</span>
+            </a>
 
-</nav>
+            <a href="#skills" aria-label="Skills" title="Skills">
+                <span class="nav-link-icon" aria-hidden="true">⌘</span>
+                <span class="nav-link-text">Skills</span>
+            </a>
 
+            <a href="#projects" aria-label="Projects" title="Projects">
+                <span class="nav-link-icon" aria-hidden="true">▣</span>
+                <span class="nav-link-text">Projects</span>
+            </a>
+
+            <a href="#contact" aria-label="Contact" title="Contact">
+                <span class="nav-link-icon" aria-hidden="true">✉</span>
+                <span class="nav-link-text">Contact</span>
+            </a>
+
+        </div>
+
+        <!-- THEME TOGGLE -->
+        <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Switch to dark mode"
+            title="Switch to dark mode"
+        >
+            <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+        </button>
+
+    </nav>
+
+    <!-- NAVIGATION SHOW/HIDE BUTTON -->
+    <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Hide navigation"
+        aria-expanded="true"
+        title="Hide navigation"
+    >
+        ×
+    </button>
+
+    <!-- PAGE CONTENT -->
     <main>
-
-        {% block content %}
-
-        {% endblock %}
-
+        {% block content %}{% endblock %}
     </main>
 
-
     <!-- FOOTER -->
-
     <footer class="footer">
-
-        <p>
-            © 2026 Julius Negro Portfolio.
-        </p>
-
+        <p>© 2026 Julius Negro Portfolio.</p>
     </footer>
 
+    <!-- THEME AND NAVIGATION JAVASCRIPT -->
+    <script>
+    (() => {
 
-    <!-- JAVASCRIPT -->
+        const body = document.body;
+        const root = document.documentElement;
 
+        const themeButton = document.getElementById('theme-toggle');
+        const themeIcon = themeButton?.querySelector('.theme-toggle-icon');
+
+        const nav = document.querySelector('.navbar');
+        const navButton = document.getElementById('nav-toggle');
+
+        /* =====================================
+           THEME MANAGEMENT
+        ===================================== */
+
+        function applyTheme(theme) {
+
+            const normalized = theme === 'dark' ? 'dark' : 'light';
+            const isDark = normalized === 'dark';
+
+            body.classList.toggle('dark-mode', isDark);
+            body.classList.toggle('light-mode', !isDark);
+
+            root.setAttribute('data-theme', normalized);
+
+            if (themeIcon) {
+                themeIcon.textContent = isDark ? '☀' : '☾';
+            }
+
+            if (themeButton) {
+
+                const label = isDark
+                    ? 'Switch to light mode'
+                    : 'Switch to dark mode';
+
+                themeButton.setAttribute('aria-label', label);
+                themeButton.setAttribute('title', label);
+
+            }
+
+            const themeColor = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (themeColor) {
+                themeColor.setAttribute(
+                    'content',
+                    isDark ? '#292e35' : '#fff8f3'
+                );
+            }
+
+        }
+
+        /* LOAD SAVED THEME */
+
+        let savedTheme = 'light';
+
+        try {
+            savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+        } catch (error) {
+            console.warn('Unable to load saved theme.');
+        }
+
+        applyTheme(savedTheme);
+
+        /* THEME BUTTON EVENT */
+
+        themeButton?.addEventListener('click', () => {
+
+            const nextTheme = body.classList.contains('dark-mode')
+                ? 'light'
+                : 'dark';
+
+            try {
+                localStorage.setItem('portfolio-theme', nextTheme);
+            } catch (error) {
+                console.warn('Unable to save theme.');
+            }
+
+            applyTheme(nextTheme);
+
+        });
+
+        /* =====================================
+           NAVIGATION MANAGEMENT
+        ===================================== */
+
+        if (nav && navButton) {
+
+            let hidden = false;
+
+            try {
+                hidden = localStorage.getItem(
+                    'portfolio-nav-hidden'
+                ) === 'true';
+            } catch (error) {
+                console.warn('Unable to load navigation state.');
+            }
+
+            function applyNavState(isHidden) {
+
+                body.classList.toggle('nav-hidden', isHidden);
+
+                navButton.textContent = isHidden ? '☰' : '×';
+
+                const label = isHidden
+                    ? 'Show navigation'
+                    : 'Hide navigation';
+
+                navButton.setAttribute('aria-label', label);
+                navButton.setAttribute('title', label);
+
+                navButton.setAttribute(
+                    'aria-expanded',
+                    String(!isHidden)
+                );
+
+            }
+
+            applyNavState(hidden);
+
+            navButton.addEventListener('click', () => {
+
+                hidden = !body.classList.contains('nav-hidden');
+
+                try {
+                    localStorage.setItem(
+                        'portfolio-nav-hidden',
+                        String(hidden)
+                    );
+                } catch (error) {
+                    console.warn('Unable to save navigation state.');
+                }
+
+                applyNavState(hidden);
+
+            });
+
+        }
+
+    })();
+    </script>
 
 </body>
 </html>
