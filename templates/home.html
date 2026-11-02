@@ -308,99 +308,66 @@ Julius Portfolio
 
 
 
-<section id="projects" class="section">
+<section id="projects" class="section projects-section">
 
     <div class="section-container">
 
-        <p class="section-label">
-            MY WORK
-        </p>
+        <p class="section-label">MY WORK</p>
+        <h2>Featured Projects</h2>
+        <p class="projects-intro">A selection of projects I've worked on, ideas I've brought to life, and solutions I've built.</p>
 
-        <h2>
-            Projects
-        </h2>
+        <div class="project-showcase" data-project-carousel aria-label="Featured projects">
 
-        <div class="projects-grid">
+            <!-- Add future projects by duplicating one project-slide block.
+                 The numbered navigation below is generated automatically. -->
 
-            <!-- STUDENT PORTAL -->
-
-            <a
-                href="{% url 'project_detail' 'student-portal' %}"
-                class="project-card"
-            >
-
-                <div class="project-image">
-
-                    <img
-                        src="{% static 'images/projects/project1/studentportal_ss2.png' %}"
-                        alt="School Attendance Portal"
-                    >
-
+            <a href="{% url 'project_detail' 'student-portal' %}"
+               class="project-slide is-active"
+               aria-label="View School Attendance Portal project details">
+                <div class="project-slide-visual">
+                    <span class="project-slide-index">01</span>
+                    <img src="{% static 'images/projects/project1/studentportal_ss2.png' %}"
+                         alt="School Attendance Portal preview">
+                    <span class="project-visual-caption">PROJECT PREVIEW</span>
                 </div>
-
-                <div class="project-card-content">
-
-                    <h3>
-                        School Attendance Portal
-                    </h3>
-
-                    <p>
-                        A web-based student management system designed to manage
-                        student and teacher information and attendance records.
-                    </p>
-
-                    <p class="project-tech">
-                        Next.js • TypeScript • React • Prisma • MySQL
-                    </p>
-
-                    <span class="project-view">
-                        View Project
-                    </span>
-
+                <div class="project-slide-info">
+                    <div class="project-slide-meta">
+                        <span class="project-category academic">Academic Project</span>
+                        <span class="project-type-note">Web Application</span>
+                    </div>
+                    <h3>School Attendance Portal</h3>
+                    <p class="project-slide-description">A web-based student management system designed to manage student and teacher information, classes, and attendance records.</p>
+                    <p class="project-slide-tech">Next.js <span>•</span> TypeScript <span>•</span> React <span>•</span> Prisma <span>•</span> MySQL</p>
+                    <span class="project-slide-link">Explore project <span aria-hidden="true">↗</span></span>
                 </div>
-
             </a>
 
-
-            <!-- E-COMMERCE WEBSITE -->
-
-            <a
-                href="{% url 'project_detail' 'e-commerce-website' %}"
-                class="project-card"
-            >
-
-                <div class="project-image">
-
-                    <img
-                        src="{% static 'images/projects/project3/ecom_ss5.png' %}"
-                        alt="E-Commerce Website"
-                    >
-
+            <a href="{% url 'project_detail' 'e-commerce-website' %}"
+               class="project-slide"
+               aria-label="View E-Commerce Website project details">
+                <div class="project-slide-visual">
+                    <span class="project-slide-index">02</span>
+                    <img src="{% static 'images/projects/project3/ecom_ss5.png' %}"
+                         alt="E-Commerce Website preview">
+                    <span class="project-visual-caption">PROJECT PREVIEW</span>
                 </div>
-
-                <div class="project-card-content">
-
-                    <h3>
-                        E-Commerce Website
-                    </h3>
-
-                    <p>
-                        An e-commerce website with product management,
-                        shopping cart, and order functionality.
-                    </p>
-
-                    <p class="project-tech">
-                        Django • Python • SQLite • HTML • CSS • JavaScript
-                    </p>
-
-                    <span class="project-view">
-                        View Project
-                    </span>
-
+                <div class="project-slide-info">
+                    <div class="project-slide-meta">
+                        <span class="project-category academic">Academic Project</span>
+                        <span class="project-type-note">E-Commerce Platform</span>
+                    </div>
+                    <h3>E-Commerce Website</h3>
+                    <p class="project-slide-description">An online ordering platform featuring product management, product browsing, shopping cart, and order management functionality.</p>
+                    <p class="project-slide-tech">Django <span>•</span> Python <span>•</span> SQLite <span>•</span> HTML <span>•</span> CSS <span>•</span> JavaScript</p>
+                    <span class="project-slide-link">Explore project <span aria-hidden="true">↗</span></span>
                 </div>
-
             </a>
 
+        </div>
+
+        <div class="project-slider-controls">
+            <div class="project-slider-pagination" data-project-pagination aria-label="Choose a project"></div>
+            <div class="project-slider-status"><span data-project-current>01</span><span class="project-slider-status-line"></span><span data-project-total>02</span></div>
         </div>
 
     </div>
@@ -617,7 +584,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "#skills .skill-card",
         "#projects .section-label",
         "#projects .section-container > h2",
-        "#projects .project-card",
+        "#projects .project-slide",
         "#contact .section-label",
         "#contact .section-container > h2",
         "#contact .section-description",
@@ -658,6 +625,85 @@ document.addEventListener("DOMContentLoaded", function () {
             loader.classList.add("loader-hidden");
             window.setTimeout(() => loader.remove(), 900);
         }, 1500);
+    }
+
+    /* =========================================================
+       FEATURED PROJECT SLIDER
+       Add another .project-slide in the HTML and the numbered
+       navigation will be generated automatically.
+    ========================================================= */
+    const projectCarousel = document.querySelector("[data-project-carousel]");
+    if (projectCarousel) {
+        const projectSlides = Array.from(projectCarousel.querySelectorAll(".project-slide"));
+        const pagination = document.querySelector("[data-project-pagination]");
+        const currentLabel = document.querySelector("[data-project-current]");
+        const totalLabel = document.querySelector("[data-project-total]");
+        let activeProject = 0;
+        let projectTimer = null;
+        const projectInterval = 2000;
+        const reduceProjectMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const showProject = (index) => {
+            if (!projectSlides.length) return;
+            activeProject = (index + projectSlides.length) % projectSlides.length;
+            projectSlides.forEach((slide, slideIndex) => {
+                const isActive = slideIndex === activeProject;
+                slide.classList.toggle("is-active", isActive);
+                slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+                if ("inert" in slide) slide.inert = !isActive;
+            });
+            if (pagination) {
+                pagination.querySelectorAll("button").forEach((button, buttonIndex) => {
+                    const isActive = buttonIndex === activeProject;
+                    button.classList.toggle("is-active", isActive);
+                    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+                });
+            }
+            if (currentLabel) currentLabel.textContent = String(activeProject + 1).padStart(2, "0");
+            if (totalLabel) totalLabel.textContent = String(projectSlides.length).padStart(2, "0");
+        };
+
+        if (pagination) {
+            pagination.innerHTML = "";
+            projectSlides.forEach((slide, index) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "project-page-button";
+                button.textContent = String(index + 1);
+                button.setAttribute("aria-label", `Show project ${index + 1}: ${slide.querySelector("h3")?.textContent.trim() || "Project"}`);
+                button.addEventListener("click", () => {
+                    showProject(index);
+                    restartProjectTimer();
+                });
+                pagination.appendChild(button);
+            });
+        }
+
+        const stopProjectTimer = () => {
+            if (projectTimer) window.clearInterval(projectTimer);
+            projectTimer = null;
+        };
+        const startProjectTimer = () => {
+            stopProjectTimer();
+            if (projectSlides.length > 1 && !reduceProjectMotion) {
+                projectTimer = window.setInterval(() => showProject(activeProject + 1), projectInterval);
+            }
+        };
+        const restartProjectTimer = () => startProjectTimer();
+
+        projectCarousel.addEventListener("mouseenter", stopProjectTimer);
+        projectCarousel.addEventListener("mouseleave", startProjectTimer);
+        projectCarousel.addEventListener("focusin", stopProjectTimer);
+        projectCarousel.addEventListener("focusout", (event) => {
+            if (!projectCarousel.contains(event.relatedTarget)) startProjectTimer();
+        });
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) stopProjectTimer();
+            else startProjectTimer();
+        });
+
+        showProject(0);
+        startProjectTimer();
     }
 
     const toast = document.getElementById("toast-notification");
